@@ -17,5 +17,6 @@ export default function() {
         new Node('l')
       ]);
 
+  console.log('%c\n*** Random tree example ***', 'color: orange;' );
   t.print();
 }

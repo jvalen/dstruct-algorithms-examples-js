@@ -113,7 +113,7 @@ export default function() {
         new Node('l')
       ]);
 
-  console.log('%c*** Tree ***', 'color: blue;');
+  console.log('%c\n*** Tree ***', 'color: blue;');
   tree.print();
 
   console.log('%c\n*** Search "k" ***', 'color: blue;');
