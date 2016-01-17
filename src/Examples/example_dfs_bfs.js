@@ -37,16 +37,16 @@ export default function() {
    * @return {object} Returns the node with the given name
    */
   function depthFirstSearchIterative(nodeName, tree) { //Iterative version
-    var pendingNodes = [],
+    var stack = new Stack(),
         currentNode,
         children,
         stepsNeeded = 0,
         found = false;
 
-    pendingNodes.unshift(tree);
+    stack.push(new Node(tree));
 
-    while ((pendingNodes.length > 0) && (!found)) {
-      currentNode = pendingNodes.shift();
+    while ((!stack.empty()) && (!found)) {
+      currentNode = stack.pop().value();
       children = currentNode.children;
 
       console.log('Current Node: ' + currentNode.name);
@@ -58,12 +58,11 @@ export default function() {
       } else if(children !== null) {
         var childrenCount = children.length;
         for (var i = childrenCount - 1; i >= 0; i--) {
-          pendingNodes.unshift(children[i]); //prepend children to node non visited
+          stack.push(new Node(children[i]));
         }
       }
     }
   }
-
 
   /**
    * Breadth-first search
@@ -80,16 +79,16 @@ export default function() {
 
     queue.add(new Node(tree));
 
-    while (queue.length() > 0) {
-      currentNode = queue.remove(); //Get the first node in the queue
-      console.log('Current Node: ' + currentNode.value().name);
+    while (!queue.empty()) {
+      currentNode = queue.remove().value(); //Get the first node in the queue
+      console.log('Current Node: ' + currentNode.name);
       stepsNeeded++;
-      if (currentNode.value().name === nodeName) { //Node found
+      if (currentNode.name === nodeName) { //Node found
         found = true;
         console.log('%cBFS - Steps needed: ' + stepsNeeded, 'color: green;');
         return currentNode;
       } else {
-        children = currentNode.value().children;
+        children = currentNode.children;
         if (children !== null) {
           for (var i = 0; i < children.length; i++) {
             queue.add(new Node(children[i]));
