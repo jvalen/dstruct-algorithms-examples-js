@@ -1,7 +1,10 @@
 var path = require('path');
 var webpack = require('webpack');
 module.exports = {
-    entry: './src/main.js',
+    entry: [
+      'webpack-dev-server/client?http://localhost:8080',
+      './src/main.js'
+    ],
     output: {
         path: __dirname,
         filename: 'bundle.js'
