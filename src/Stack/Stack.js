@@ -1,3 +1,7 @@
+/**
+ * Stack class
+ * @constructor
+ */
 class Stack {
   constructor() {
     this._data = [];

@@ -1,5 +1,7 @@
-import Node from '../Node/Node.js';
-
+/**
+ * Queue class
+ * @constructor
+ */
 class Queue {
   constructor() {
     this._data = [];

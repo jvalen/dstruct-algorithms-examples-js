@@ -1,7 +1,10 @@
 import {shuffle} from '../Utils/utils.js';
 
 /**
- *
+ * Tree class
+ * @param {array} possibleValues
+ * @constructor
+ * Creates a random tree from possibleValues
  */
 class Tree {
   constructor(possibleValues) {
